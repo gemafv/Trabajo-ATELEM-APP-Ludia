@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/fondo">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo de la app"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Nombre de la app -->
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona un juego:"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#434d50"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Botón Tres en Raya -->
+    <Button
+        android:id="@+id/btnTresEnRaya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tres en Raya"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón Ahorcado -->
+    <Button
+        android:id="@+id/btnAhorcado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ahorcado"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón Tirar Dado -->
+    <Button
+        android:id="@+id/btnTirarDado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tirar un dado"/>
+
+    <!-- Texto de copyright -->
+    <TextView
+        android:id="@+id/copyrightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copyright© Gema, Samuel, Alexandre 2025"
+        android:textSize="12sp"
+        android:textColor="#434d50"
+        android:layout_marginTop="32dp"/>
+
+</LinearLayout>
