@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/fondo">
+
+    <!-- Texto que muestra el turno -->
+    <TextView
+        android:id="@+id/textTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turno: X"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#434d50"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Tablero de 3x3 -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true">
+
+        <Button android:id="@+id/btn00" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn01" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn02" style="@style/TicTacToeButton"/>
+
+        <Button android:id="@+id/btn10" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn11" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn12" style="@style/TicTacToeButton"/>
+
+        <Button android:id="@+id/btn20" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn21" style="@style/TicTacToeButton"/>
+        <Button android:id="@+id/btn22" style="@style/TicTacToeButton"/>
+    </GridLayout>
+
+    <!-- Botón para reiniciar -->
+    <Button
+        android:id="@+id/btnReiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar partida"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#434d50" />
+
+    <!-- Botón para volver al menú principal -->
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver al Menú"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#8F8F8F" /> <!-- Color naranja -->
+</LinearLayout>

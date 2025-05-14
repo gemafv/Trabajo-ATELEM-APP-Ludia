@@ -1,5 +1,7 @@
 package com.example.ludia;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         btnTirarDado = findViewById(R.id.btnTirarDado);
 
         // Agregar acciones a cada botón (por ahora solo un mensaje)
-        btnTresEnRaya.setOnClickListener(v ->
-                Toast.makeText(MainActivity.this, "Abrir Tres en Raya (pendiente)", Toast.LENGTH_SHORT).show()
-        );
+        btnTresEnRaya.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, TresEnRayaActivity.class);
+            startActivity(intent);
+        });
 
         btnAhorcado.setOnClickListener(v ->
                 Toast.makeText(MainActivity.this, "Abrir Ahorcado (pendiente)", Toast.LENGTH_SHORT).show()
