@@ -4,6 +4,7 @@ package com.example.ludia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Declarar los botones
     Button btnTresEnRaya, btnAhorcado, btnTirarDado;
+    ImageButton btnEstadisticas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +23,24 @@ public class MainActivity extends AppCompatActivity {
         btnTresEnRaya = findViewById(R.id.btnTresEnRaya);
         btnAhorcado = findViewById(R.id.btnAhorcado);
         btnTirarDado = findViewById(R.id.btnTirarDado);
+        btnEstadisticas = findViewById(R.id.btnEstadisticas);
 
         // Agregar acciones a cada botón (por ahora solo un mensaje)
+
+        btnEstadisticas.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, EstadisticasActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
         btnTresEnRaya.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, TresEnRayaActivity.class);
             startActivity(intent);
+            finish();
         });
 
         btnAhorcado.setOnClickListener(v ->
-                Toast.makeText(MainActivity.this, "Abrir Ahorcado (pendiente)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(MainActivity.this, "Abrir Ahorcado (pendiente)", Toast.LENGTH_SHORT).show()
         );
 
         btnTirarDado.setOnClickListener(v ->

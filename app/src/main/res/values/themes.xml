@@ -3,6 +3,7 @@
     <style name="Base.Theme.Ludia" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimaryVariant">@color/gris_oscuro</item>
     </style>
 
     <style name="Theme.Ludia" parent="Base.Theme.Ludia" />

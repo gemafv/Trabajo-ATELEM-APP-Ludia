@@ -6,7 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TresEnRayaActivity extends AppCompatActivity {
 
@@ -16,10 +25,18 @@ public class TresEnRayaActivity extends AppCompatActivity {
     private TextView textTurno;
     private Button btnReiniciar, btnVolverMenu;
 
+    private FirebaseFirestore db;
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tres_en_raya);
+
+        //autentificación y extracción del uid del usuario para poder guardar datos:
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         textTurno = findViewById(R.id.textTurno);
         btnReiniciar = findViewById(R.id.btnReiniciar);
@@ -50,12 +67,15 @@ public class TresEnRayaActivity extends AppCompatActivity {
                         if (comprobarGanador()) {
                             if (turnoJugador1) {
                                 mostrarMensaje("¡Jugador X gana!");
+                                guardarResultadoEnFirestore("victoriaX");
                             } else {
                                 mostrarMensaje("¡Jugador O gana!");
+                                guardarResultadoEnFirestore("victoriaO");
                             }
                             resetearTablero();
                         } else if (ronda == 9) {
                             mostrarMensaje("¡Empate!");
+                            guardarResultadoEnFirestore("empate");
                             resetearTablero();
                         } else {
                             turnoJugador1 = !turnoJugador1;
@@ -129,4 +149,29 @@ public class TresEnRayaActivity extends AppCompatActivity {
         startActivity(intent); //activa el intent creado
         finish();  // finaliza la actividad actual
     }
+
+    private void guardarResultadoEnFirestore(String resultado) {
+        if (user == null) return; //esto no debería de ocurrir
+
+        String uid = user.getUid();
+        String campo = resultado.equals("victoriaX") ? "victoriasX" :
+                resultado.equals("victoriaO") ? "victoriasO" :
+                        "empates"; //si ha sido victoriaX, entonces campo=victoriasX, etc.
+
+        db.collection("users")
+                .document(uid)
+                .update("tresEnRaya." + campo, FieldValue.increment(1))
+                .addOnFailureListener(e -> {
+                    // Si falla (por ejemplo, porque no existe el documento), creamos uno nuevo
+                    Map<String, Object> stats = new HashMap<>();
+                    Map<String, Object> juego = new HashMap<>();
+                    juego.put("victoriasX", resultado.equals("victoriaX") ? 1 : 0);
+                    juego.put("victoriasO", resultado.equals("victoriasO") ? 1 : 0);
+                    juego.put("empates", resultado.equals("empate") ? 1 : 0);
+                    stats.put("tresEnRaya", juego);
+
+                    db.collection("users").document(uid).set(stats);
+                });
+    }
+
 }
