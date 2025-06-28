@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "420142340255",
+    "project_id": "ludia-5d06f",
+    "storage_bucket": "ludia-5d06f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420142340255:android:9e963f9470d1b376556aaa",
+        "android_client_info": {
+          "package_name": "com.example.ludia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjBJtUfQuzVN0JWaU99NJgCZT3B6ipax8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

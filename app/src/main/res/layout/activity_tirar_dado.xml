@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondodado"
+    android:padding="16dp">
+
+    <!-- Botón para volver al menú en la esquina superior izquierda -->
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:backgroundTint="#000000"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <!-- Imagen del dado en el centro -->
+    <ImageView
+        android:id="@+id/imageDado"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="Imagen del dado"
+        android:src="@drawable/dado_1" />
+
+    <!-- Botón para tirar el dado debajo de la imagen -->
+    <Button
+        android:id="@+id/btnTirarDado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tirar dado"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/imageDado"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="32dp" />
+
+</RelativeLayout>

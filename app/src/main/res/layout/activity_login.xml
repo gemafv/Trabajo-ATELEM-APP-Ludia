@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/fondo"
+    android:background="@drawable/fondologin"
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
@@ -68,7 +68,7 @@
                 android:id="@+id/login_button"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
-                android:backgroundTint="@color/marron_apagado"
+                android:backgroundTint="@color/gris_oscuro"
                 app:cornerRadius="10dp"/>
 
             <TextView

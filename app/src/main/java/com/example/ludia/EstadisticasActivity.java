@@ -1,5 +1,6 @@
 package com.example.ludia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ public class EstadisticasActivity extends AppCompatActivity {
     private static final String TAG = "EstadisticasActivity";
 
     private TextView tresRayaVictoriasX, tresRayaVictoriasO, tresRayaEmpates;
+    private TextView ahorcadoAciertos, ahorcadoDerrotas, ahorcadoMagistrales;
     private ImageButton buttonBack;
 
     private FirebaseFirestore db;
@@ -36,11 +38,19 @@ public class EstadisticasActivity extends AppCompatActivity {
         tresRayaVictoriasX = findViewById(R.id.tresRayaVictoriasX);
         tresRayaVictoriasO = findViewById(R.id.tresRayaVictoriasO);
         tresRayaEmpates = findViewById(R.id.tresRayaEmpates);
+        ahorcadoAciertos = findViewById(R.id.ahorcadoAciertos);
+        ahorcadoDerrotas = findViewById(R.id.ahorcadoDerrotas);
+        ahorcadoMagistrales = findViewById(R.id.ahorcadoMagistrales);
         buttonBack = findViewById(R.id.button_back);
 
-        buttonBack.setOnClickListener(v -> finish());
+        buttonBack.setOnClickListener(v -> {
+            Intent intent = new Intent(EstadisticasActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         cargarEstadisticasTresEnRaya();
+        cargarEstadisticasAhorcado();
     }
 
     private void cargarEstadisticasTresEnRaya() {
@@ -56,37 +66,22 @@ public class EstadisticasActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        Log.d(TAG, "Documento usuario existe");
-
                         Object obj = documentSnapshot.get("tresEnRaya");
-
                         if (obj instanceof Map) {
                             @SuppressWarnings("unchecked")
-                            Map<String, Object> mapTresEnRaya = (Map<String, Object>) obj;
-
-                            Long victoriasX = getLongSafe(mapTresEnRaya, "victoriasX");
-                            Long victoriasO = getLongSafe(mapTresEnRaya, "victoriasO");
-                            Long empates = getLongSafe(mapTresEnRaya, "empates");
-
-                            tresRayaVictoriasX.setText(String.valueOf(victoriasX));
-                            tresRayaVictoriasO.setText(String.valueOf(victoriasO));
-                            tresRayaEmpates.setText(String.valueOf(empates));
-
-                            Log.d(TAG, "VictoriasX: " + victoriasX + ", VictoriasO: " + victoriasO + ", Empates: " + empates);
-
+                            Map<String, Object> data = (Map<String, Object>) obj;
+                            tresRayaVictoriasX.setText(String.valueOf(getLongSafe(data, "victoriasX")));
+                            tresRayaVictoriasO.setText(String.valueOf(getLongSafe(data, "victoriasO")));
+                            tresRayaEmpates.setText(String.valueOf(getLongSafe(data, "empates")));
                         } else {
-                            Log.d(TAG, "'tresEnRaya' no existe o no es un Map. Valor: " + obj);
                             setTresEnRayaStatsToZero();
                         }
-
                     } else {
-                        Log.d(TAG, "Documento usuario NO existe");
                         setTresEnRayaStatsToZero();
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Log.e(TAG, "Error al obtener documento usuario", e);
-                    Toast.makeText(this, "Error al cargar estadísticas", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error al obtener estadísticas tres en raya", e);
                     setTresEnRayaStatsToZero();
                 });
     }
@@ -95,6 +90,42 @@ public class EstadisticasActivity extends AppCompatActivity {
         tresRayaVictoriasX.setText("0");
         tresRayaVictoriasO.setText("0");
         tresRayaEmpates.setText("0");
+    }
+
+    private void cargarEstadisticasAhorcado() {
+        if (user == null) return;
+
+        String uid = user.getUid();
+
+        db.collection("users")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    if (snapshot.exists()) {
+                        Object obj = snapshot.get("ahorcado");
+                        if (obj instanceof Map) {
+                            @SuppressWarnings("unchecked")
+                            Map<String, Object> data = (Map<String, Object>) obj;
+                            ahorcadoAciertos.setText(String.valueOf(getLongSafe(data, "victorias")));
+                            ahorcadoDerrotas.setText(String.valueOf(getLongSafe(data, "derrotas")));
+                            ahorcadoMagistrales.setText(String.valueOf(getLongSafe(data, "victoriasMagistrales")));
+                        } else {
+                            setAhorcadoStatsToZero();
+                        }
+                    } else {
+                        setAhorcadoStatsToZero();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error al cargar estadísticas de ahorcado", e);
+                    setAhorcadoStatsToZero();
+                });
+    }
+
+    private void setAhorcadoStatsToZero() {
+        ahorcadoAciertos.setText("0");
+        ahorcadoDerrotas.setText("0");
+        ahorcadoMagistrales.setText("0");
     }
 
     private Long getLongSafe(Map<String, Object> map, String key) {

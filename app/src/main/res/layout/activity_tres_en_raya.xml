@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondotresenraya">
 
     <!-- Texto que muestra el turno -->
     <TextView
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Reiniciar partida"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#434d50" />
+        android:backgroundTint="#000000" />
 
     <!-- Botón para volver al menú principal -->
     <Button
@@ -58,5 +58,5 @@
         android:layout_height="wrap_content"
         android:text="Volver al Menú"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#8F8F8F" /> <!-- Color naranja -->
+        android:backgroundTint="@color/gris_oscuro" /> <!-- Color naranja -->
 </LinearLayout>

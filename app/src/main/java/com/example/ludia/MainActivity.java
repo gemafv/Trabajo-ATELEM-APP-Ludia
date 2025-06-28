@@ -8,10 +8,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
     // Declarar los botones
-    Button btnTresEnRaya, btnAhorcado, btnTirarDado;
+    Button btnTresEnRaya, btnAhorcado, btnTirarDado, btnCerrarSesion;
     ImageButton btnEstadisticas;
 
     @Override
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnAhorcado = findViewById(R.id.btnAhorcado);
         btnTirarDado = findViewById(R.id.btnTirarDado);
         btnEstadisticas = findViewById(R.id.btnEstadisticas);
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
         // Agregar acciones a cada botón (por ahora solo un mensaje)
 
@@ -39,12 +42,25 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
-        btnAhorcado.setOnClickListener(v ->
-            Toast.makeText(MainActivity.this, "Abrir Ahorcado (pendiente)", Toast.LENGTH_SHORT).show()
-        );
+        btnAhorcado.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AhorcadoActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
-        btnTirarDado.setOnClickListener(v ->
-                Toast.makeText(MainActivity.this, "Abrir Tirar Dado (pendiente)", Toast.LENGTH_SHORT).show()
-        );
+
+        btnTirarDado.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, TirarDadoActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        // NUEVO: Botón cerrar sesión
+        btnCerrarSesion.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut(); // Cierra sesión en Firebase
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpia el backstack
+            startActivity(intent);
+            finish();
+        });
     }
 }
