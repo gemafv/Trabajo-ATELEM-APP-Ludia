@@ -6,7 +6,7 @@
     android:background="@drawable/fondomain"
     android:padding="24dp">
 
-    <!-- Botón Estadísticas en esquina superior izquierda -->
+    
     <ImageButton
         android:id="@+id/btnEstadisticas"
         android:layout_width="64dp"
@@ -21,7 +21,7 @@
         android:padding="0dp"
         android:scaleType="fitXY" />
 
-    <!-- Botón Cerrar Sesión en esquina superior derecha -->
+    
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_marginEnd="8dp"
         android:backgroundTint="#000000"/>
 
-    <!-- Contenedor principal debajo de los botones superiores -->
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +41,7 @@
         android:gravity="center"
         android:layout_below="@id/btnEstadisticas">
 
-        <!-- Logo -->
+        
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="250dp"
@@ -50,7 +50,7 @@
             android:contentDescription="Logo de la app"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Nombre de la app -->
+        
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
             android:textColor="#000000"
             android:layout_marginBottom="32dp"/>
 
-        <!-- Botón Tres en Raya -->
+        
         <Button
             android:id="@+id/btnTresEnRaya"
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#000000"/>
 
-        <!-- Botón Ahorcado -->
+        
         <Button
             android:id="@+id/btnAhorcado"
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#000000"/>
 
-        <!-- Botón Tirar Dado -->
+        
         <Button
             android:id="@+id/btnTirarDado"
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:backgroundTint="#000000"
             android:text="Tirar un dado" />
 
-        <!-- Copyright -->
+        
         <TextView
             android:id="@+id/copyrightText"
             android:layout_width="wrap_content"
