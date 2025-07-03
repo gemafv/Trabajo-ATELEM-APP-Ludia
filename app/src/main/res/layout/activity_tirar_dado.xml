@@ -5,7 +5,7 @@
     android:background="@drawable/fondodado"
     android:padding="16dp">
 
-    <!-- Botón para volver al menú en la esquina superior izquierda -->
+    
     <Button
         android:id="@+id/btnVolverMenu"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
-    <!-- Imagen del dado en el centro -->
+    
     <ImageView
         android:id="@+id/imageDado"
         android:layout_width="200dp"
@@ -24,7 +24,7 @@
         android:contentDescription="Imagen del dado"
         android:src="@drawable/dado_1" />
 
-    <!-- Botón para tirar el dado debajo de la imagen -->
+    
     <Button
         android:id="@+id/btnTirarDado"
         android:layout_width="wrap_content"
