@@ -6,7 +6,7 @@
     android:padding="24dp"
     android:background="@drawable/fondotresenraya">
 
-    <!-- Botón para volver al menú en la esquina superior izquierda -->
+    
     <Button
         android:id="@+id/btnVolverMenu"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginBottom="16dp" />
 
-    <!-- Contenedor vertical para el resto de contenido -->
+   
     <LinearLayout
         android:id="@+id/contenedorJuego"
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:textColor="#434d50"
             android:layout_marginBottom="16dp" />
 
-        <!-- Tablero de 3x3 -->
+       
         <GridLayout
             android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
             <Button android:id="@+id/btn22" style="@style/TicTacToeButton"/>
         </GridLayout>
 
-        <!-- Botón para reiniciar -->
+        
         <Button
             android:id="@+id/btnReiniciar"
             android:layout_width="wrap_content"
