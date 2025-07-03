@@ -27,7 +27,7 @@
         android:layout_below="@id/btnVolverMenu"
         android:layout_marginTop="50dp">
 
-        <!-- Texto que muestra el turno -->
+       
         <TextView
             android:id="@+id/textTurno"
             android:layout_width="wrap_content"
