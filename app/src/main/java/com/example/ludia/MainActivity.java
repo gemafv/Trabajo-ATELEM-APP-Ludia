@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declarar los botones
+    
     Button btnTresEnRaya, btnAhorcado, btnTirarDado, btnCerrarSesion;
     ImageButton btnEstadisticas;
 
@@ -21,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Cargar el layout
 
-        // Asociar los botones con sus IDs del XML
+        
         btnTresEnRaya = findViewById(R.id.btnTresEnRaya);
         btnAhorcado = findViewById(R.id.btnAhorcado);
         btnTirarDado = findViewById(R.id.btnTirarDado);
         btnEstadisticas = findViewById(R.id.btnEstadisticas);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
-        // Agregar acciones a cada botón (por ahora solo un mensaje)
+        
 
         btnEstadisticas.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, EstadisticasActivity.class);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-        // NUEVO: Botón cerrar sesión
+        
         btnCerrarSesion.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut(); // Cierra sesión en Firebase
             Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
